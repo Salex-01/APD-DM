@@ -1,0 +1,23 @@
+--  LeLann algorithm  --
+
+	Each node that can become the leader sends a message containing its ID to its neighbor (on its right)
+	Each candidate node creates a list of the IDs of all the candidates
+	Each node repeats the messages it receives to its neighbor (on its right)
+	When a node receives a message containing its ID, it stops it, computes the minimum ID present in its list, and becomes the leader if it is the same as its own ID
+	
+Algorithm: (the message is called "water")
+
+1:if InitNode then
+2:	send own ID to right neighbor
+
+3:forever
+4:	receive ID from left neighbor
+5:	if ID == own ID
+6:		compute minimum in list
+7:		if minimum == own ID
+8:			leader = true
+9:		else
+10:			leader = false
+11:	else
+12:		add ID to list
+13:		send ID to right neighbor
